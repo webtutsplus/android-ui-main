@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             Thread thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    link = "http://18.191.244.74:8080/api/user/add";                                     // The private IP address of the machine is used
+                    link = "http://18.191.244.74:8080/api/user/add";                                    // endpoint for API
                     try {
                         URL url = new URL (link);                                                       // new url object is created
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();              // HTTP connection object is created

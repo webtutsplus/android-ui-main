@@ -47,17 +47,16 @@ public class User extends AppCompatActivity {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                link = "http://18.191.244.74:8080/api/user/";                                            // The private IP address of the machine is used
+                link = "http://18.191.244.74:8080/api/user/";                                          // endpoint for API
                 try {
                     URL url = new URL(link);                                                           // new url object is created
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();                  // HTTP connection object is created
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();                 // HTTP connection object is created
                     BufferedReader rd = new BufferedReader(new InputStreamReader(
                             conn.getInputStream()));
                     while ((line = rd.readLine()) != null) {
-                        String jsonString = "{" + " \"Data\": " + line + "}";
+                        String jsonString = "{" + " \"Data\": " + line + "}";                           // Get the response
                         try {
                             JSONObject jsonObject = new JSONObject(jsonString);
-                            Log.i("Obj", String.valueOf(jsonObject));
                             JSONArray array = jsonObject.getJSONArray("Data");
                             for (int i=0; i < array.length(); i++) {
                                 JSONObject oneObject = array.getJSONObject(i);
@@ -69,33 +68,41 @@ public class User extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        // Remove all child views
                                         table.removeAllViews();
+                                        //Create new table row
                                         TableRow tr = new TableRow(User.this);
                                         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                                        //Create new TextView for column 1
                                         TextView t1 = new TextView(User.this);
                                         t1.setText(uname);
                                         t1.setTextColor(Color.parseColor("#00d9d9"));
                                         t1.setTextSize(10);
                                         t1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+                                        //Create new TextView for column 2
                                         TextView t2 = new TextView(User.this);
                                         t2.setText(email);
                                         t2.setTextColor(Color.parseColor("#00d9d9"));
                                         t2.setTextSize(10);
                                         t2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+                                        //Create new TextView for column 3
                                         TextView t3 = new TextView(User.this);
                                         t3.setText(f_name);
                                         t3.setTextColor(Color.parseColor("#00d9d9"));
                                         t3.setTextSize(10);
                                         t3.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+                                        //Create new TextView for column 4
                                         TextView t4 = new TextView(User.this);
                                         t4.setText(l_name);
                                         t4.setTextColor(Color.parseColor("#00d9d9"));
                                         t4.setTextSize(10);
                                         t4.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+                                        // Add TextViews to table row
                                         tr.addView(t1);
                                         tr.addView(t2);
                                         tr.addView(t3);
                                         tr.addView(t4);
+                                        // Add table row to Table View
                                         table.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
                                     }
                                 });
@@ -110,7 +117,7 @@ public class User extends AppCompatActivity {
                     if (!code.equals("200")) {
                         failed_toast.show();
                     }
-                    // Successfully delete user data from the database.
+                    // Show data in a table form.
                     else {
                         fetched_toast.show();
                     }
