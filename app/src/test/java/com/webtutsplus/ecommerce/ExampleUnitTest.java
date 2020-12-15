@@ -1,4 +1,4 @@
-package com.example.userprofile;
+package com.webtutsplus.ecommerce;
 
 import org.junit.Test;
 
