@@ -1,4 +1,4 @@
-package com.example.userprofile;
+package com.webtutsplus.ecommerce;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,10 +19,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Config{
 
     EditText user, email, fname, lname;
-    String user1, email1, fname1, lname1, link, reply, code;
+    String user1, email1, fname1, lname1, reply, code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +55,8 @@ public class MainActivity extends AppCompatActivity {
             Thread thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    link = "http://138.68.64.95:8080/api/user/add";                                    // endpoint for API
                     try {
-                        URL url = new URL (link);                                                       // new url object is created
+                        URL url = new URL (Config.api_url2);                                             // new url object is created
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();              // HTTP connection object is created
                         conn.setRequestMethod("POST");                                                  // POST method
                         conn.setRequestProperty("Content-Type", "application/json; utf-8");             // JSON format is specified
@@ -98,10 +97,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
+                        failed_toast.show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        failed_toast.show();
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        failed_toast.show();
                     }
                 }
             });
