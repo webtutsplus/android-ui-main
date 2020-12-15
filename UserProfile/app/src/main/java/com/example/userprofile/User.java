@@ -47,7 +47,7 @@ public class User extends AppCompatActivity {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                link = "http://18.191.244.74:8080/api/user/";                                          // endpoint for API
+                link = "http://138.68.64.95:8080/api/user/";                                          // endpoint for API
                 try {
                     URL url = new URL(link);                                                           // new url object is created
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();                 // HTTP connection object is created
