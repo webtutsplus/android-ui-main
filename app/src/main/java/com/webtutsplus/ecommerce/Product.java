@@ -6,17 +6,19 @@ public class Product {
     private String imageURL;
     private double price;
     private String description;
+    private long categoryId;
 
-    public long getId() {
-        return id;
-    }
-
-    public Product(long id, String name, String image, double price, String description) {
+    public Product(long id, String name, String image, double price, String description, long categoryId) {
         this.id = id;
         this.name = name;
         this.imageURL = image;
         this.price = price;
         this.description = description;
+        this.categoryId =categoryId;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getName() {
@@ -33,5 +35,9 @@ public class Product {
 
     public String getDescription() {
         return description;
+    }
+
+    public long getCategoryId() {
+        return this.categoryId;
     }
 }
