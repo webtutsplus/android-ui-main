@@ -20,6 +20,12 @@ public interface API {
     @POST("product/add/")
     Call<ResponseBody> addProduct(@Body Product p);
 
+    @POST("category/create/")
+    Call<ResponseBody> addCategory(@Body Category c);
+
     @POST("product/update/{id}")
     Call<ResponseBody> updateProduct(@Path("id") long productId, @Body Product p);
+
+    @POST("category/update/{id}")
+    Call<ResponseBody> updateCategory(@Path("id") long categoryId, @Body Category c);
 }
