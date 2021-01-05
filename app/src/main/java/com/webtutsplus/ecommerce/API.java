@@ -14,6 +14,9 @@ public interface API {
     @GET("product/")
     Call<List<Product>> getProducts();
 
+    @GET("category/")
+    Call<List<Category>> getCategory();
+
     @POST("product/add/")
     Call<ResponseBody> addProduct(@Body Product p);
 
