@@ -73,6 +73,7 @@ public class AddProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addProduct();
+
             }
         });
     }
@@ -83,9 +84,11 @@ public class AddProductActivity extends AppCompatActivity {
         String imageURL = etImageURL.getText().toString().trim();
         double price = Double.parseDouble(etPrice.getText().toString().trim());
         String description = etDescription.getText().toString().trim();
+        int categoryId = ((Category)spinner.getSelectedItem()).getId();
+
 
         API api = RetrofitClient.getInstance().getAPI();
-        Call<ResponseBody> call = api.addProduct(new Product(id, name, imageURL, price, description));
+        Call<ResponseBody> call = api.addProduct(new Product(id, name, imageURL, price, description, categoryId));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
