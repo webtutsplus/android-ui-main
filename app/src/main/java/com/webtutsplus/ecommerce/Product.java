@@ -8,6 +8,18 @@ public class Product {
     private String description;
     private long categoryId;
 
+
+    public Product(long id, String name, String image, double price, String description) {
+        this.id = id;
+        this.name = name;
+        this.imageURL = image;
+        this.price = price;
+        this.description = description;
+    }
+
+
+
+
     public Product(long id, String name, String image, double price, String description, long categoryId) {
         this.id = id;
         this.name = name;
