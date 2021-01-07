@@ -1,17 +1,11 @@
-package com.webtutsplus.ecommerce;
+package com.webtutsplus.ecommerceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
-
-import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

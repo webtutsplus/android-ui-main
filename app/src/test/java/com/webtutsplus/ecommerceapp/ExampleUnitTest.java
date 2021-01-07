@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerce;
+package com.webtutsplus.ecommerceapp;
 
 import org.junit.Test;
 

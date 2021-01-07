@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.webtutsplus.ecommerce",
+  "applicationId": "com.webtutsplus.ecommerceapp",
   "variantName": "release",
   "elements": [
     {

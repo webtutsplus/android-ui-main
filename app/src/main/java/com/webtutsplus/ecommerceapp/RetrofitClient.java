@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerce;
+package com.webtutsplus.ecommerceapp;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

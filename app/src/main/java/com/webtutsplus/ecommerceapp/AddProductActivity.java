@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerce;
+package com.webtutsplus.ecommerceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateProductActivity extends AppCompatActivity {
+public class AddProductActivity extends AppCompatActivity {
 
     private EditText etId, etName, etImageURL, etPrice, etDescription;
     private Spinner spinner;
@@ -26,14 +26,14 @@ public class UpdateProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_product);
+        setContentView(R.layout.activity_add_product);
 
-        etId = findViewById(R.id.etId2);
-        etName = findViewById(R.id.etName2);
-        etImageURL = findViewById(R.id.etImageURL2);
-        etPrice = findViewById(R.id.etPrice2);
-        etDescription = findViewById(R.id.etDescription2);
-        spinner = (Spinner) findViewById(R.id.etCategoryId2);
+        etId = findViewById(R.id.etId1);
+        etName = findViewById(R.id.etName1);
+        etImageURL = findViewById(R.id.etImageURL1);
+        etPrice = findViewById(R.id.etPrice1);
+        etDescription = findViewById(R.id.etDescription1);
+        spinner = (Spinner) findViewById(R.id.etCategoryId1);
 
         //Api Call to fetch all the categories
         API api = RetrofitClient.getInstance().getAPI();
@@ -42,14 +42,14 @@ public class UpdateProductActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(UpdateProductActivity.this, response.code() + "", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddProductActivity.this, response.code() + "", Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 categories = response.body();
                 Log.e("Fetched Category",categories.get(0).getCategoryName());
                 // Create an ArrayAdapter using the List of categories and a default spinner layout
-                ArrayAdapter<Category> dataAdapter = new ArrayAdapter<Category>(UpdateProductActivity.this,
+                ArrayAdapter<Category> dataAdapter = new ArrayAdapter<Category>(AddProductActivity.this,
                         android.R.layout.simple_spinner_item, categories);
 
                 // Specify the layout to use when the list of choices appears
@@ -61,20 +61,23 @@ public class UpdateProductActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
-                Toast.makeText(UpdateProductActivity.this, t.getMessage() + "", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddProductActivity.this, t.getMessage() + "", Toast.LENGTH_LONG).show();
             }
         });
 
 
-        findViewById(R.id.btnUpdateProduct).setOnClickListener(new View.OnClickListener() {
+
+
+        findViewById(R.id.btnAddProduct).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateProduct();
+                addProduct();
+
             }
         });
     }
 
-    private void updateProduct() {
+    private void addProduct() {
         long id = Long.parseLong(etId.getText().toString().trim());
         String name = etName.getText().toString().trim();
         String imageURL = etImageURL.getText().toString().trim();
@@ -82,23 +85,24 @@ public class UpdateProductActivity extends AppCompatActivity {
         String description = etDescription.getText().toString().trim();
         int categoryId = ((Category)spinner.getSelectedItem()).getId();
 
+
         API api = RetrofitClient.getInstance().getAPI();
-        Call<ResponseBody> call = api.updateProduct(id, new Product(id, name, imageURL, price, description, categoryId));
+        Call<ResponseBody> call = api.addProduct(new Product(id, name, imageURL, price, description, categoryId));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     String test = response.body().string();
-                    Toast.makeText(UpdateProductActivity.this, "Successfully Updated!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddProductActivity.this, "Successfully Added!", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
-                    Toast.makeText(UpdateProductActivity.this, response.code()+"", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(UpdateProductActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(AddProductActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -108,4 +112,6 @@ public class UpdateProductActivity extends AppCompatActivity {
         etPrice.getText().clear();
         etDescription.getText().clear();
     }
+
+
 }
