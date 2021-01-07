@@ -49,10 +49,10 @@ public class UpdateCategoryActivity extends AppCompatActivity {
         String description = etDescription.getText().toString().trim();
         newCategory = new Category();
         newCategory.setCategoryName(name);
-        newCategory.setId((int)id);
+//        newCategory.setId(null);
         newCategory.setImageUrl(imageURL);
         newCategory.setDescription(description);
-
+//        newCategory.setProducts(null);
 
 
         API api = RetrofitClient.getInstance().getAPI();
@@ -63,7 +63,8 @@ public class UpdateCategoryActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     String test = response.body().string();
-                    Toast.makeText(UpdateCategoryActivity.this, "Successfully Added!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateCategoryActivity.this, "Successfully Updated!", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(UpdateCategoryActivity.this, test, Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     Toast.makeText(UpdateCategoryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     Log.e("Update Category Error", e.getMessage());
@@ -73,7 +74,7 @@ public class UpdateCategoryActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(UpdateCategoryActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                Log.e("Update Category Throwable", t.getMessage());
+                Log.e("Update Throwable", t.getMessage());
             }
         });
 
@@ -82,4 +83,6 @@ public class UpdateCategoryActivity extends AppCompatActivity {
         etImageURL.getText().clear();
         etDescription.getText().clear();
     }
+
+
 }
