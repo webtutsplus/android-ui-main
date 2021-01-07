@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.webtutsplus.ecommerce">
+    package="com.webtutsplus.ecommerceapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,10 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UpdateProductActivity"></activity>
-        <activity android:name=".AddProductActivity" />
-        <activity android:name=".ListProductsActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.webtutsplus.ecommerceapp.UpdateProductActivity"></activity>
+        <activity android:name="com.webtutsplus.ecommerceapp.AddProductActivity" />
+        <activity android:name="com.webtutsplus.ecommerceapp.ListProductsActivity" />
+        <activity android:name="com.webtutsplus.ecommerceapp.AddCategoryActivity" />
+        <activity android:name="com.webtutsplus.ecommerceapp.UpdateCategoryActivity" />
+        <activity android:name="com.webtutsplus.ecommerceapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

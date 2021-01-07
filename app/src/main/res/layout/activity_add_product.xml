@@ -33,6 +33,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubitle" />
 
+    <Spinner
+        android:id="@+id/etCategoryId1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etId1" />
+
     <EditText
         android:id="@+id/etName1"
         android:layout_width="match_parent"
@@ -41,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etId1" />
+        app:layout_constraintTop_toBottomOf="@id/etCategoryId1" />
 
     <EditText
         android:id="@+id/etImageURL1"

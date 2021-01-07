@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerce;
+package com.webtutsplus.ecommerceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +31,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, UpdateProductActivity.class));
+            }
+        });
+
+        findViewById(R.id.btnToAddCategories).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AddCategoryActivity.class));
+            }
+        });
+
+        findViewById(R.id.btnToUpdateCategories).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, UpdateCategoryActivity.class));
             }
         });
 

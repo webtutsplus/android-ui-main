@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerce;
+package com.webtutsplus.ecommerceapp;
 
 public class Product {
     private long id;
@@ -6,10 +6,7 @@ public class Product {
     private String imageURL;
     private double price;
     private String description;
-
-    public long getId() {
-        return id;
-    }
+    private long categoryId;
 
     public Product(long id, String name, String image, double price, String description) {
         this.id = id;
@@ -17,6 +14,16 @@ public class Product {
         this.imageURL = image;
         this.price = price;
         this.description = description;
+    }
+
+    public Product(long id, String name, String image, double price, String description, long categoryId) {
+        this(id, name, image, price, description);
+        this.categoryId = categoryId;
+    }
+
+
+    public long getId() {
+        return id;
     }
 
     public String getName() {
@@ -33,5 +40,9 @@ public class Product {
 
     public String getDescription() {
         return description;
+    }
+
+    public long getCategoryId() {
+        return categoryId;
     }
 }
