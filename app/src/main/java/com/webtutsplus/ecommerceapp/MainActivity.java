@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btnToUpdateProduct).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, UpdateProductActivity.class));
-            }
-        });
+//        findViewById(R.id.btnToUpdateProduct).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, UpdateProductActivity.class));
+//            }
+//        });
 
         findViewById(R.id.btnToAddCategories).setOnClickListener(new View.OnClickListener() {
             @Override

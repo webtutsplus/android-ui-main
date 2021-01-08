@@ -1,6 +1,7 @@
 package com.webtutsplus.ecommerceapp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private Context context;
     private List<Product> products;
+    private OnItemClickListener onItemClickListener1;
 
-    public ProductAdapter(Context context, List<Product> products) {
+    public ProductAdapter(Context context, List<Product> products, OnItemClickListener onItemClickListener) {
         this.context = context;
         this.products = products;
+        this.onItemClickListener1 = onItemClickListener;
     }
 
     @NonNull
@@ -29,7 +32,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.product_item, parent, false);
-        return new ProductViewHolder(view);
+        return new ProductViewHolder(view, onItemClickListener1);
     }
 
     @Override
@@ -52,18 +55,31 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return products.size();
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder {
+    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView ivProduct;
         TextView tvId, tvName, tvPrice, tvDescription;
+        OnItemClickListener onItemClickListener;
 
-        public ProductViewHolder(@NonNull View itemView) {
+        public ProductViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
+            this.onItemClickListener = onItemClickListener;
             ivProduct = (ImageView) itemView.findViewById(R.id.ivProduct);
             tvId = (TextView) itemView.findViewById(R.id.tvId);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvPrice = (TextView) itemView.findViewById(R.id.tvPrice);
             tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onItemClickListener.onItemClick(products.get(getAdapterPosition()));
         }
     }
 }
+
+interface OnItemClickListener {
+    public void onItemClick(Product p);
+}
+

@@ -46,19 +46,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btnToUpdateProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
-        android:background="@color/colorPrimary"
-        android:text="UPDATE PRODUCT"
-        android:textColor="@android:color/background_dark"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/btnToAddProduct"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/btnToUpdateProduct"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="76dp"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        android:text="UPDATE PRODUCT"-->
+<!--        android:textColor="@android:color/background_dark"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/btnToAddProduct"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
     <Button
         android:id="@+id/btnToViewProducts"
@@ -69,7 +69,7 @@
         android:text="VIEW PRODUCTS"
         android:textColor="@android:color/background_dark"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnToUpdateProduct"
+        app:layout_constraintBottom_toBottomOf="@+id/btnToAddProduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
