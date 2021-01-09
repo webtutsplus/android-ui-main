@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -103,7 +104,6 @@ public class AddCategoryActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    String test = response.body().string();
                     Toast.makeText(AddCategoryActivity.this, "Successfully Added!", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     Toast.makeText(AddCategoryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -141,29 +141,31 @@ public class AddCategoryActivity extends AppCompatActivity {
                     cursor.moveToFirst();
                     int indexImage = cursor.getColumnIndex(imageProjection[0]);
                     String part_image = cursor.getString(indexImage);
-                    File imageFile = new File(part_image);
-                    RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-file"), imageFile);
-                    MultipartBody.Part partImage = MultipartBody.Part.createFormData("file", imageFile.getName(), reqBody);
-                    API api = RetrofitClient.getInstance().getAPI();
-                    Call<ResponseBody> upload = api.uploadImage(partImage);
-                    upload.enqueue(new Callback<ResponseBody>() {
-                        @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            if(response.isSuccessful()) {
-                                Toast.makeText(AddCategoryActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
-                                try {
-                                    etImageURL.setText(response.body().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+                    if (part_image != null) {
+                        File imageFile = new File(part_image);
+                        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-file"), imageFile);
+                        MultipartBody.Part partImage = MultipartBody.Part.createFormData("file", imageFile.getName(), reqBody);
+                        API api = RetrofitClient.getInstance().getAPI();
+                        Call<ResponseBody> upload = api.uploadImage(partImage);
+                        upload.enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if (response.isSuccessful()) {
+                                    Toast.makeText(AddCategoryActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
+                                    try {
+                                        etImageURL.setText(response.body().string());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(AddCategoryActivity.this, "Request failed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Toast.makeText(AddCategoryActivity.this, "Request failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
             }
         }

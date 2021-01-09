@@ -176,30 +176,31 @@ public class AddProductActivity extends AppCompatActivity {
                     cursor.moveToFirst();
                     int indexImage = cursor.getColumnIndex(imageProjection[0]);
                     String part_image = cursor.getString(indexImage);
-                    File imageFile = new File(part_image);
-                    RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-file"), imageFile);
-                    MultipartBody.Part partImage = MultipartBody.Part.createFormData("file", imageFile.getName(), reqBody);
-                    API api = RetrofitClient.getInstance().getAPI();
-                    Call<ResponseBody> upload = api.uploadImage(partImage);
-                    upload.enqueue(new Callback<ResponseBody>() {
-                        @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            if(response.isSuccessful()) {
-                                Toast.makeText(AddProductActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
-                                try {
-                                    etImageURL.setText(response.body().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+                    if (part_image != null) {
+                        File imageFile = new File(part_image);
+                        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-file"), imageFile);
+                        MultipartBody.Part partImage = MultipartBody.Part.createFormData("file", imageFile.getName(), reqBody);
+                        API api = RetrofitClient.getInstance().getAPI();
+                        Call<ResponseBody> upload = api.uploadImage(partImage);
+                        upload.enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if (response.isSuccessful()) {
+                                    Toast.makeText(AddProductActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
+                                    try {
+                                        etImageURL.setText(response.body().string());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(AddProductActivity.this, "Request failed", Toast.LENGTH_SHORT).show();
-                            Log.i("Debug", t.getMessage());
-                        }
-                    });
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Toast.makeText(AddProductActivity.this, "Request failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
             }
         }
