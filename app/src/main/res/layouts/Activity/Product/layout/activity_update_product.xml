@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:padding="20dp"
-    tools:context=".AddProductActivity">
+    tools:context=".Activity.Product.UpdateProductActivity">
 
     <TextView
-        android:id="@+id/tvSubitle3"
+        android:id="@+id/tvSubitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="ADD CATEGORY"
+        android:text="UPDATE PRODUCT"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -22,54 +22,73 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etId3"
+        android:id="@+id/etId2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:hint="ID"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSubitle3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSubitle2" />
+
+    <Spinner
+        android:id="@+id/etCategoryId2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etId2" />
+
 
     <EditText
-        android:id="@+id/etName3"
+        android:id="@+id/etName2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etId3" />
+        app:layout_constraintTop_toBottomOf="@+id/etCategoryId2" />
 
     <EditText
-        android:id="@+id/etImageURL3"
+        android:id="@+id/etImageURL2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Image URL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etName3" />
-
+        app:layout_constraintTop_toBottomOf="@+id/etName2" />
 
     <EditText
-        android:id="@+id/etDescription3"
+        android:id="@+id/etPrice2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etImageURL2" />
+
+    <EditText
+        android:id="@+id/etDescription2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etImageURL3" />
+        app:layout_constraintTop_toBottomOf="@+id/etPrice2" />
 
     <Button
-        android:id="@+id/btnAddCategory"
+        android:id="@+id/btnUpdateProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="ADD Category"
+        android:text="UPDATE"
         android:textColor="#000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

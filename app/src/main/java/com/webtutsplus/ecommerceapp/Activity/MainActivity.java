@@ -1,10 +1,16 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.webtutsplus.ecommerceapp.Activity.Category.AddCategoryActivity;
+import com.webtutsplus.ecommerceapp.Activity.Category.UpdateCategoryActivity;
+import com.webtutsplus.ecommerceapp.Activity.Product.AddProductActivity;
+import com.webtutsplus.ecommerceapp.Activity.Product.ListProductsActivity;
+import com.webtutsplus.ecommerceapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Model;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

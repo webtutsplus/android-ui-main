@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Activity.Category;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.webtutsplus.ecommerceapp.Network.API;
+import com.webtutsplus.ecommerceapp.Model.Category;
+import com.webtutsplus.ecommerceapp.R;
+import com.webtutsplus.ecommerceapp.Network.RetrofitClient;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

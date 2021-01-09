@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Activity.Product;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.webtutsplus.ecommerceapp.Network.API;
+import com.webtutsplus.ecommerceapp.Model.Category;
+import com.webtutsplus.ecommerceapp.Model.Product;
+import com.webtutsplus.ecommerceapp.R;
+import com.webtutsplus.ecommerceapp.Network.RetrofitClient;
 
 import java.util.List;
 
