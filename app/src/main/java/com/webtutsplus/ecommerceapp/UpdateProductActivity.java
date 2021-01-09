@@ -41,7 +41,10 @@ public class UpdateProductActivity extends AppCompatActivity {
         etImageURL.setText(getIntent().getStringExtra("imageUrl"));
         etDescription.setText(getIntent().getStringExtra("desc"));
         etPrice.setText(String.valueOf(getIntent().getDoubleExtra("price",0.0)));
-        catId = getIntent().getLongExtra("categoryId",2);
+        catId = getIntent().getLongExtra("categoryId",0);
+        if (catId == 0L) {
+            Toast.makeText(getApplicationContext(), "The product has no Category Set. Choose one category", Toast.LENGTH_LONG).show();
+        }
 
 
 
