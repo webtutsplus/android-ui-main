@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Model;
 
 public class Product {
     private long id;

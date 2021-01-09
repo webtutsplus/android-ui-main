@@ -1,10 +1,17 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.webtutsplus.ecommerceapp.Activity.Category.AddCategoryActivity;
+import com.webtutsplus.ecommerceapp.Activity.Category.ListCategoriesActivity;
+import com.webtutsplus.ecommerceapp.Activity.Category.UpdateCategoryActivity;
+import com.webtutsplus.ecommerceapp.Activity.Product.AddProductActivity;
+import com.webtutsplus.ecommerceapp.Activity.Product.ListProductsActivity;
+import com.webtutsplus.ecommerceapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,12 +34,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        findViewById(R.id.btnToUpdateProduct).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, UpdateProductActivity.class));
-//            }
-//        });
 
         findViewById(R.id.btnToAddCategories).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btnToUpdateCategories).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnToViewCategories).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, UpdateCategoryActivity.class));
+                startActivity(new Intent(MainActivity.this, ListCategoriesActivity.class));
             }
         });
 

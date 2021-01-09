@@ -1,4 +1,7 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Network;
+
+import com.webtutsplus.ecommerceapp.Model.Category;
+import com.webtutsplus.ecommerceapp.Model.Product;
 
 import java.util.List;
 

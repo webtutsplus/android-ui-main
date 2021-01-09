@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "com.webtutsplus.ecommerceapp"
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdkVersion 16
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -17,6 +17,21 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layouts/Activity/Category',
+                            'src/main/res/layouts/Activity/Product',
+                            'src/main/res/layouts/Activity',
+                            'src/main/res/layouts/ListItem',
+                            'src/main/res/layouts/List',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
         }
     }
 }
@@ -38,3 +53,4 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }
+

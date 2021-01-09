@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Activity.Product;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -22,6 +22,12 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import com.webtutsplus.ecommerceapp.Network.API;
+import com.webtutsplus.ecommerceapp.Model.Category;
+import com.webtutsplus.ecommerceapp.Model.Product;
+import com.webtutsplus.ecommerceapp.R;
+import com.webtutsplus.ecommerceapp.Network.RetrofitClient;
+
 import java.util.List;
 
 import okhttp3.MediaType;
