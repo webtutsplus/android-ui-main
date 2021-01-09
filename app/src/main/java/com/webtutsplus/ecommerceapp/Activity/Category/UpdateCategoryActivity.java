@@ -34,6 +34,11 @@ public class UpdateCategoryActivity extends AppCompatActivity {
         etImageURL = findViewById(R.id.etImageURL4);
         etDescription = findViewById(R.id.etDescription4);
 
+        etId.setText(String.valueOf(getIntent().getIntExtra("id",0)));
+        etName.setText(getIntent().getStringExtra("name"));
+        etImageURL.setText(getIntent().getStringExtra("imageUrl"));
+        etDescription.setText(getIntent().getStringExtra("desc"));
+
         findViewById(R.id.btnUpdateCategory).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

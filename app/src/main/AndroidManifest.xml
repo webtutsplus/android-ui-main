@@ -12,11 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.UpdateProductActivity"></activity>
+        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.UpdateProductActivity" />
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.AddProductActivity" />
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.ListProductsActivity" />
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.AddCategoryActivity" />
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.UpdateCategoryActivity" />
+        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.ListCategoriesActivity" />
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
