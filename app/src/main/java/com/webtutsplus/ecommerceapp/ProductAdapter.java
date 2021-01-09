@@ -19,12 +19,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private Context context;
     private List<Product> products;
-    private OnItemClickListener onItemClickListener1;
+    private OnItemClickListener clickListener;
 
-    public ProductAdapter(Context context, List<Product> products, OnItemClickListener onItemClickListener) {
+    public ProductAdapter(Context context, List<Product> products, OnItemClickListener clickListener) {
         this.context = context;
         this.products = products;
-        this.onItemClickListener1 = onItemClickListener;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -32,7 +32,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.product_item, parent, false);
-        return new ProductViewHolder(view, onItemClickListener1);
+        return new ProductViewHolder(view, clickListener);
     }
 
     @Override
