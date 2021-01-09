@@ -22,6 +22,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     private EditText etId, etName, etImageURL, etPrice, etDescription;
     private Spinner spinner;
     private List<Category> categories;
+    private long catId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,19 @@ public class UpdateProductActivity extends AppCompatActivity {
         etPrice = findViewById(R.id.etPrice2);
         etDescription = findViewById(R.id.etDescription2);
         spinner = (Spinner) findViewById(R.id.etCategoryId2);
+
+        etId.setText(String.valueOf(getIntent().getLongExtra("id",0)));
+        etName.setText(getIntent().getStringExtra("name"));
+        etImageURL.setText(getIntent().getStringExtra("imageUrl"));
+        etDescription.setText(getIntent().getStringExtra("desc"));
+        etPrice.setText(String.valueOf(getIntent().getDoubleExtra("price",0.0)));
+        catId = getIntent().getLongExtra("categoryId",0);
+        if (catId == 0L) {
+            Toast.makeText(getApplicationContext(), "The product has no Category Set. Choose one category", Toast.LENGTH_LONG).show();
+        }
+
+
+
 
         //Api Call to fetch all the categories
         API api = RetrofitClient.getInstance().getAPI();
@@ -57,6 +71,14 @@ public class UpdateProductActivity extends AppCompatActivity {
 
                 // Apply the adapter to the spinner
                 spinner.setAdapter(dataAdapter);
+
+                for(int i = 0; i < categories.size(); i++) {
+                    if(categories.get(i).getId()==catId) {
+                        spinner.setSelection(i);
+                        break;
+                    }
+                }
+
             }
 
             @Override
@@ -64,6 +86,7 @@ public class UpdateProductActivity extends AppCompatActivity {
                 Toast.makeText(UpdateProductActivity.this, t.getMessage() + "", Toast.LENGTH_LONG).show();
             }
         });
+
 
 
         findViewById(R.id.btnUpdateProduct).setOnClickListener(new View.OnClickListener() {
