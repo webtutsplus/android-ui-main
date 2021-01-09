@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Activity.Product;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -14,12 +14,21 @@ import android.provider.MediaStore;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import com.webtutsplus.ecommerceapp.Network.API;
+import com.webtutsplus.ecommerceapp.Model.Category;
+import com.webtutsplus.ecommerceapp.Model.Product;
+import com.webtutsplus.ecommerceapp.R;
+import com.webtutsplus.ecommerceapp.Network.RetrofitClient;
+
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -29,10 +38,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateCategoryActivity extends AppCompatActivity {
+public class UpdateProductActivity extends AppCompatActivity {
 
-    private EditText etId, etName, etImageURL, etDescription;
-    private Category newCategory;
+    private EditText etId, etName, etImageURL, etPrice, etDescription;
+    private Spinner spinner;
+    private List<Category> categories;
+    private long catId;
 
     private static final int PICK_IMAGE_REQUEST = 9544;
 
@@ -45,15 +56,68 @@ public class UpdateCategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_category);
+        setContentView(R.layout.activity_update_product);
+
+        etId = findViewById(R.id.etId2);
+        etName = findViewById(R.id.etName2);
+        etImageURL = findViewById(R.id.etImageURL2);
+        etPrice = findViewById(R.id.etPrice2);
+        etDescription = findViewById(R.id.etDescription2);
+        spinner = (Spinner) findViewById(R.id.etCategoryId2);
+
+        etId.setText(String.valueOf(getIntent().getLongExtra("id",0)));
+        etName.setText(getIntent().getStringExtra("name"));
+        etImageURL.setText(getIntent().getStringExtra("imageUrl"));
+        etDescription.setText(getIntent().getStringExtra("desc"));
+        etPrice.setText(String.valueOf(getIntent().getDoubleExtra("price",0.0)));
+        catId = getIntent().getLongExtra("categoryId",0);
+        if (catId == 0L) {
+            Toast.makeText(getApplicationContext(), "The product has no Category Set. Choose one category", Toast.LENGTH_LONG).show();
+        }
 
 
-        etId = findViewById(R.id.etId4);
-        etName = findViewById(R.id.etName4);
-        etImageURL = findViewById(R.id.etImageURL4);
-        etDescription = findViewById(R.id.etDescription4);
 
-        findViewById(R.id.checkUpload4).setOnClickListener(new View.OnClickListener() {
+
+        //Api Call to fetch all the categories
+        API api = RetrofitClient.getInstance().getAPI();
+        Call<List<Category>> call = api.getCategory();
+        call.enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(UpdateProductActivity.this, response.code() + "", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                categories = response.body();
+                Log.e("Fetched Category",categories.get(0).getCategoryName());
+                // Create an ArrayAdapter using the List of categories and a default spinner layout
+                ArrayAdapter<Category> dataAdapter = new ArrayAdapter<Category>(UpdateProductActivity.this,
+                        android.R.layout.simple_spinner_item, categories);
+
+                // Specify the layout to use when the list of choices appears
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                // Apply the adapter to the spinner
+                spinner.setAdapter(dataAdapter);
+
+                for(int i = 0; i < categories.size(); i++) {
+                    if(categories.get(i).getId()==catId) {
+                        spinner.setSelection(i);
+                        break;
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                Toast.makeText(UpdateProductActivity.this, t.getMessage() + "", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        findViewById(R.id.checkUpload2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(((CheckBox)v).isChecked()) {
@@ -75,58 +139,52 @@ public class UpdateCategoryActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btnUpdateCategory).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.btnUpdateProduct).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateCategory();
+                updateProduct();
             }
         });
     }
 
-    private void updateCategory() {
+    private void updateProduct() {
         long id = Long.parseLong(etId.getText().toString().trim());
         String name = etName.getText().toString().trim();
         String imageURL = etImageURL.getText().toString().trim();
+        double price = Double.parseDouble(etPrice.getText().toString().trim());
         String description = etDescription.getText().toString().trim();
-        newCategory = new Category();
-        newCategory.setCategoryName(name);
-//        newCategory.setId(null);
-        newCategory.setImageUrl(imageURL);
-        newCategory.setDescription(description);
-//        newCategory.setProducts(null);
-
+        int categoryId = ((Category)spinner.getSelectedItem()).getId();
 
         API api = RetrofitClient.getInstance().getAPI();
-        Call<ResponseBody> call = api.updateCategory(id, newCategory);
+        Call<ResponseBody> call = api.updateProduct(id, new Product(id, name, imageURL, price, description, categoryId));
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     String test = response.body().string();
-                    Toast.makeText(UpdateCategoryActivity.this, "Successfully Updated!", Toast.LENGTH_LONG).show();
-                    //Toast.makeText(UpdateCategoryActivity.this, test, Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateProductActivity.this, "Successfully Updated!", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
-                    Toast.makeText(UpdateCategoryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    Log.e("Update Category Error", e.getMessage());
+                    Toast.makeText(UpdateProductActivity.this, response.code()+"", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(UpdateCategoryActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                Log.e("Update Throwable", t.getMessage());
+                Toast.makeText(UpdateProductActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
         etId.getText().clear();
         etName.getText().clear();
         etImageURL.getText().clear();
+        etPrice.getText().clear();
         etDescription.getText().clear();
     }
 
     public void pick() {
-        verifyStoragePermissions(UpdateCategoryActivity.this);
+        verifyStoragePermissions(UpdateProductActivity.this);
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(Intent.createChooser(intent, "Open Gallery"), PICK_IMAGE_REQUEST);
@@ -154,7 +212,7 @@ public class UpdateCategoryActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                                 if (response.isSuccessful()) {
-                                    Toast.makeText(UpdateCategoryActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(UpdateProductActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
                                     try {
                                         etImageURL.setText(response.body().string());
                                     } catch (IOException e) {
@@ -165,7 +223,7 @@ public class UpdateCategoryActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                Toast.makeText(UpdateCategoryActivity.this, "Request failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UpdateProductActivity.this, "Request failed", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

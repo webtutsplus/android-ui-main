@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Activity.Category;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,12 +24,17 @@ import java.io.IOException;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import com.webtutsplus.ecommerceapp.Network.API;
+import com.webtutsplus.ecommerceapp.Model.Category;
+import com.webtutsplus.ecommerceapp.R;
+import com.webtutsplus.ecommerceapp.Network.RetrofitClient;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddCategoryActivity extends AppCompatActivity {
+public class UpdateCategoryActivity extends AppCompatActivity {
 
     private EditText etId, etName, etImageURL, etDescription;
     private Category newCategory;
@@ -46,15 +50,20 @@ public class AddCategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_category);
-
-        etId = findViewById(R.id.etId3);
-        etName = findViewById(R.id.etName3);
-        etImageURL = findViewById(R.id.etImageURL3);
-        etDescription = findViewById(R.id.etDescription3);
+        setContentView(R.layout.activity_update_category);
 
 
-        findViewById(R.id.checkUpload3).setOnClickListener(new View.OnClickListener() {
+        etId = findViewById(R.id.etId4);
+        etName = findViewById(R.id.etName4);
+        etImageURL = findViewById(R.id.etImageURL4);
+        etDescription = findViewById(R.id.etDescription4);
+
+        etId.setText(String.valueOf(getIntent().getIntExtra("id",0)));
+        etName.setText(getIntent().getStringExtra("name"));
+        etImageURL.setText(getIntent().getStringExtra("imageUrl"));
+        etDescription.setText(getIntent().getStringExtra("desc"));
+
+        findViewById(R.id.checkUpload4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(((CheckBox)v).isChecked()) {
@@ -75,44 +84,49 @@ public class AddCategoryActivity extends AppCompatActivity {
                 }
             }
         });
+        
 
-        findViewById(R.id.btnAddCategory).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnUpdateCategory).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addCategory();
+                updateCategory();
             }
         });
     }
 
-    private void addCategory() {
+    private void updateCategory() {
         long id = Long.parseLong(etId.getText().toString().trim());
         String name = etName.getText().toString().trim();
         String imageURL = etImageURL.getText().toString().trim();
         String description = etDescription.getText().toString().trim();
         newCategory = new Category();
         newCategory.setCategoryName(name);
-        newCategory.setId((int)id);
+//        newCategory.setId(null);
         newCategory.setImageUrl(imageURL);
         newCategory.setDescription(description);
-
+//        newCategory.setProducts(null);
 
 
         API api = RetrofitClient.getInstance().getAPI();
-        Call<ResponseBody> call = api.addCategory(newCategory);
+        Call<ResponseBody> call = api.updateCategory(id, newCategory);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    Toast.makeText(AddCategoryActivity.this, "Successfully Added!", Toast.LENGTH_LONG).show();
+                    String test = response.body().string();
+                    Toast.makeText(UpdateCategoryActivity.this, "Successfully Updated!", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(UpdateCategoryActivity.this, test, Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
-                    Toast.makeText(AddCategoryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(UpdateCategoryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.e("Update Category Error", e.getMessage());
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(AddCategoryActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(UpdateCategoryActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Log.e("Update Throwable", t.getMessage());
             }
         });
 
@@ -123,7 +137,7 @@ public class AddCategoryActivity extends AppCompatActivity {
     }
 
     public void pick() {
-        verifyStoragePermissions(AddCategoryActivity.this);
+        verifyStoragePermissions(UpdateCategoryActivity.this);
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(Intent.createChooser(intent, "Open Gallery"), PICK_IMAGE_REQUEST);
@@ -151,7 +165,7 @@ public class AddCategoryActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                                 if (response.isSuccessful()) {
-                                    Toast.makeText(AddCategoryActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(UpdateCategoryActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
                                     try {
                                         etImageURL.setText(response.body().string());
                                     } catch (IOException e) {
@@ -162,7 +176,7 @@ public class AddCategoryActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                Toast.makeText(AddCategoryActivity.this, "Request failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UpdateCategoryActivity.this, "Request failed", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

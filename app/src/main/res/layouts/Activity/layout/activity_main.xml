@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -46,20 +46,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btnToUpdateProduct"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="76dp"-->
-<!--        android:background="@color/colorPrimary"-->
-<!--        android:text="UPDATE PRODUCT"-->
-<!--        android:textColor="@android:color/background_dark"-->
-<!--        android:textSize="16sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/btnToAddProduct"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
     <Button
         android:id="@+id/btnToViewProducts"
         android:layout_width="match_parent"
@@ -89,12 +75,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnToUpdateCategories"
+        android:id="@+id/btnToViewCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="76dp"
         android:background="@color/colorPrimary"
-        android:text="UPDATE CATEGORIES"
+        android:text="VIEW CATEGORIES"
         android:textColor="@android:color/background_dark"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/btnToAddCategories"

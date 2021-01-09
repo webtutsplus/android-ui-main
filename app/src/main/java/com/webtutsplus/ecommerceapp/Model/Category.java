@@ -1,4 +1,4 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Model;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
@@ -17,7 +17,7 @@ public class Category {
     private String description;
     @SerializedName("imageUrl")
     @Expose
-    private Object imageUrl;
+    private String imageUrl;
     @SerializedName("products")
     @Expose
     private List<Product> products = null;
@@ -46,11 +46,11 @@ public class Category {
         this.description = description;
     }
 
-    public Object getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(Object imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 

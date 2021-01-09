@@ -1,7 +1,6 @@
-package com.webtutsplus.ecommerceapp;
+package com.webtutsplus.ecommerceapp.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.webtutsplus.ecommerceapp.Model.Product;
+import com.webtutsplus.ecommerceapp.Utility.OnItemClickListener;
+import com.webtutsplus.ecommerceapp.R;
 
 import java.util.List;
 
@@ -79,7 +81,5 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 }
 
-interface OnItemClickListener {
-    public void onItemClick(Product p);
-}
+
 
