@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.Product.ProductPurchaseActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto"
+            android:text="Product Name"
+            android:gravity="center"
+            android:id="@+id/title_page">
+
+        </TextView>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginBottom="60dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/product_image"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/wood"
+                android:scaleType="fitXY"
+                android:layout_height="300dp">
+
+            </ImageView>
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_name"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:textColor="#000"
+                android:fontFamily="@font/roboto"
+                android:text="Ultrasonic sensor"
+                ></TextView>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#8A5ED8"
+                android:layout_marginTop="5dp"
+                android:textColor="#fff"
+                android:text="Sensor"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/product_price"
+                    android:textSize="18sp"
+                    android:textColor="#000"
+                    android:layout_marginTop="5sp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Price : ">
+
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/product_original_price"
+                    android:textSize="18sp"
+                    android:textColor="#E33535"
+                    android:layout_marginTop="5sp"
+                    android:fontFamily="@font/roboto"
+                    android:text="$ 200">
+
+                </TextView>
+
+
+
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/description"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_marginTop="5sp"
+                android:fontFamily="@font/roboto"
+                android:text="Highly accurate"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_description"
+                android:fontFamily="@font/roboto"
+                android:textColor="#000"
+                android:layout_marginTop="20sp"
+                android:textSize="18sp"
+                android:text="Features : "
+                ></TextView>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rev_features"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                tools:listitem="@layout/listitem_product_features" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="60dp"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/layout_2"
+        android:weightSum="2">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/btn_add_to_cart"
+            android:text="Add to Cart"
+            app:cornerRadius="0dp"
+            android:layout_height="match_parent">
+
+
+        </com.google.android.material.button.MaterialButton>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/btn_buy_now"
+            app:cornerRadius="0dp"
+            android:text="Buy now"
+            android:backgroundTint="#2FCF1D"
+            android:layout_height="match_parent">
+
+
+        </com.google.android.material.button.MaterialButton>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
