@@ -21,6 +21,8 @@
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.AddCategoryActivity" />
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.UpdateCategoryActivity" />
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.ListCategoriesActivity" />
+        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Home.HomeActivity"/>
+        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.ProductPurchaseActivity"/>
         <activity android:name="com.webtutsplus.ecommerceapp.Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -23,16 +23,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PRODUCTS"
+        android:text="Admin"
+        android:fontFamily="cursive"
         android:textColor="#000"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+
+    <Button
+        android:id="@+id/btnToHomePage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="HOME PAGE"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnToViewCategories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.869" />
 
     <Button
         android:id="@+id/btnToAddProduct"

@@ -47,9 +47,10 @@ public class ProductPurchaseActivity extends AppCompatActivity {
         if (description!=null)
             productDescription.setText(description);
 
-        if (name!=null)
+        if (name!=null) {
             productName.setText(name);
-
+            titleBar.setText(name);
+        }
         if (price!=null)
             productPrice.setText(price);
 
