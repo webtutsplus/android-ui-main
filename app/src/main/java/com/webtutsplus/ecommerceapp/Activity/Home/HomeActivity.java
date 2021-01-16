@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.webtutsplus.ecommerceapp.Activity.Category.ListCategoriesActivity;
+import com.webtutsplus.ecommerceapp.Activity.MainActivity;
 import com.webtutsplus.ecommerceapp.Activity.Product.ProductPurchaseActivity;
 import com.webtutsplus.ecommerceapp.Adapter.HomeCategoryAdapter;
 import com.webtutsplus.ecommerceapp.Adapter.HomeProductAdapter;
@@ -30,6 +32,7 @@ import retrofit2.Response;
 public class HomeActivity extends AppCompatActivity implements OnItemClickListener {
 
     Button startShoppingButton;
+    TextView adminOptionsButton;
 
     private RecyclerView revCategories;
     private RecyclerView revProducts;
@@ -42,12 +45,18 @@ public class HomeActivity extends AppCompatActivity implements OnItemClickListen
         startShoppingButton = findViewById(R.id.start_shopping_btn);
         revCategories = findViewById(R.id.revCategories);
         revProducts = findViewById(R.id.revProducts);
-
+        adminOptionsButton = findViewById(R.id.btn_admin_options);
 
         startShoppingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, ListCategoriesActivity.class));
+            }
+        });
+        adminOptionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, MainActivity.class));
             }
         });
 
