@@ -9,8 +9,10 @@ import android.view.View;
 import com.webtutsplus.ecommerceapp.Activity.Category.AddCategoryActivity;
 import com.webtutsplus.ecommerceapp.Activity.Category.ListCategoriesActivity;
 import com.webtutsplus.ecommerceapp.Activity.Category.UpdateCategoryActivity;
+import com.webtutsplus.ecommerceapp.Activity.Home.HomeActivity;
 import com.webtutsplus.ecommerceapp.Activity.Product.AddProductActivity;
 import com.webtutsplus.ecommerceapp.Activity.Product.ListProductsActivity;
+import com.webtutsplus.ecommerceapp.Activity.Product.ProductPurchaseActivity;
 import com.webtutsplus.ecommerceapp.R;
 
 public class MainActivity extends AppCompatActivity {

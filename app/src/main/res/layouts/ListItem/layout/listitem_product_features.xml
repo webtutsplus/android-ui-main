@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="25dp"
+    android:orientation="horizontal"
+    android:layout_marginLeft="20dp">
+
+
+    <ImageView
+        android:layout_width="5dp"
+        android:src="@drawable/circle"
+        android:layout_gravity="center"
+        android:layout_height="5dp">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/product_feature"
+        android:textSize="14sp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="4dp"
+        android:textColor="#000"
+        android:fontFamily="@font/roboto"
+        android:text="Ultrasonic sensor"
+        ></TextView>
+
+</LinearLayout>

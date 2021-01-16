@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fff"
+    app:cardElevation="8dp"
+    android:padding="4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/catImage"
+            tools:src="@drawable/wood"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="2dp" />
+
+
+        <TextView
+            android:id="@+id/catName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/catId"
+            android:fontFamily="@font/roboto"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/catImage"
+            android:layout_toRightOf="@id/catImage"
+            android:text="Iddddd2"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/catDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/catName"
+            android:fontFamily="@font/roboto"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/catImage"
+            android:layout_toRightOf="@id/catImage"
+            android:text="Iddddd2"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

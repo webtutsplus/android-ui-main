@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.webtutsplus.ecommerceapp"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -52,5 +52,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation group: 'com.google.android.material', name: 'material', version: '1.1.0-alpha05'
 }
 
