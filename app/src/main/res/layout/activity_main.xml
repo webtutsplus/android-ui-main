@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools ="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@drawable/ecommerce"
+        android:elevation="10dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/user_icon" />
+
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/profile"
+                android:layout_marginLeft="20dp"
+                android:drawableStart="@drawable/magnify"
+                android:gravity="left"
+                android:hint="search"
+                android:textColorHint="@color/element_black"
+                android:textColor="@color/bg_black2"
+                android:textCursorDrawable="@null"
+                android:drawablePadding="5dp"
+                android:background="@drawable/search" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Webtutsplus"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="40dp"
+                android:layout_marginTop="240dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="market"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="40dp"
+                android:layout_marginTop="275dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:layout_marginTop="350dp"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="420dp"
+                    android:background="@color/bg_black2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Popular Categories"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="10dp"
+                        android:fillViewport="true"
+                        android:scrollbars="none">
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TableRow
+                                android:id="@+id/category"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content">
+
+                            </TableRow>
+                        </TableLayout>
+                    </HorizontalScrollView>
+
+                    <Button
+                        android:id="@+id/explore_categories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:padding="10dp"
+                        android:text="Explore All"
+                        android:textColor="@color/white"
+                        android:background="@drawable/explore_category_button"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="420dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Popular Products"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/bg_black2"
+                        android:textSize="20dp" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="10dp"
+                        android:fillViewport="true"
+                        android:scrollbars="vertical">
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TableRow
+                                android:id="@+id/item"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content">
+
+                            </TableRow>
+                        </TableLayout>
+                    </HorizontalScrollView>
+                    <Button
+                        android:id="@+id/explore_products"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:padding="10dp"
+                        android:text="Explore All"
+                        android:textColor="@color/bg_black2"
+                        android:background="@drawable/explore_products_button"
+                        android:textSize="15dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,43 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.webtutsplus.ecommerceapp">
+    package="com.webtutsplus.ecommerce">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.UpdateProductActivity" />
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.AddProductActivity" />
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.ListProductsActivity" />
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.AddCategoryActivity" />
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.UpdateCategoryActivity" />
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Category.ListCategoriesActivity" />
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Home.HomeActivity">
-
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.Product.ProductPurchaseActivity"/>
-        <activity android:name="com.webtutsplus.ecommerceapp.Activity.MainActivity">
-
         </activity>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <activity android:name=".CategoryDetails"/>
+        <activity android:name=".AllProducts"/>
+        <activity android:name=".AllCategories"/>
+
     </application>
-
 </manifest>

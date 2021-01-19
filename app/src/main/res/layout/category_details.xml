@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools ="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    tools:context=".CategoryDetails">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/midnight" >
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="75dp"
+        android:layout_toEndOf="@+id/profile"
+        android:layout_marginLeft="20dp"
+        android:drawableStart="@drawable/magnify"
+        android:gravity="left"
+        android:hint="search"
+        android:textColorHint="@color/element_black"
+        android:textColor="@color/bg_black2"
+        android:textCursorDrawable="@null"
+        android:drawablePadding="5dp"
+        android:background="@drawable/search" />
+
+    <TextView
+        android:id="@+id/no_products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sorry, no products found."
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/cat_bg"
+        android:layout_width="match_parent"
+        android:layout_height="780dp"
+        android:layout_marginTop="130dp"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:id="@+id/cat_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TableLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

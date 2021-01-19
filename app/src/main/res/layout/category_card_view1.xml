@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cat_card1"
+    android:layout_width="175dp"
+    android:layout_height="280dp"
+    android:layout_marginHorizontal="15dp"
+    android:clickable="true"
+    android:elevation="1dp"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:weightSum="8">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp">
+
+        <ImageView
+            android:id="@+id/cat_thumb1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/image" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/cat_name1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:fontFamily="sans-serif-medium"
+        android:background="@drawable/round_corners"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+</LinearLayout>
