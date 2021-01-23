@@ -45,7 +45,6 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(holder.catImage);
         holder.catName.setText(c.getCategoryName());
-        holder.catDescription.setText(c.getDescription());
     }
 
     @Override
@@ -56,14 +55,13 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView catImage;
-        TextView catId, catName, catDescription;
+        TextView catId, catName;
         OnCategoryItemClickListener onCategoryItemClickListener;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             catImage = (ImageView) itemView.findViewById(R.id.catImage);
             catName = (TextView) itemView.findViewById(R.id.catName);
-            catDescription = (TextView) itemView.findViewById(R.id.catDescription);
         }
 
         @Override

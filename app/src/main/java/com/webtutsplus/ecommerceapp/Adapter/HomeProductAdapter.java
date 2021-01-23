@@ -48,7 +48,6 @@ public class HomeProductAdapter  extends RecyclerView.Adapter<HomeProductAdapter
                 .into(holder.ivProduct);
 
         holder.tvName.setText(p.getName());
-        holder.tvDescription.setText(p.getDescription());
     }
 
     @Override
@@ -59,7 +58,7 @@ public class HomeProductAdapter  extends RecyclerView.Adapter<HomeProductAdapter
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView ivProduct;
-        TextView tvId, tvName, tvPrice, tvDescription;
+        TextView tvId, tvName, tvPrice;
         OnItemClickListener onItemClickListener;
 
         public ProductViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
@@ -67,7 +66,6 @@ public class HomeProductAdapter  extends RecyclerView.Adapter<HomeProductAdapter
             this.onItemClickListener = onItemClickListener;
             ivProduct = (ImageView) itemView.findViewById(R.id.ivProduct);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
-            tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
             itemView.setOnClickListener(this);
         }
 

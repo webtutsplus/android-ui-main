@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.webtutsplus.ecommerceapp.Activity.Category.ListCategoriesActivity;
 import com.webtutsplus.ecommerceapp.Activity.MainActivity;
+import com.webtutsplus.ecommerceapp.Activity.Product.ListProductsActivity;
 import com.webtutsplus.ecommerceapp.Activity.Product.ProductPurchaseActivity;
 import com.webtutsplus.ecommerceapp.Adapter.HomeCategoryAdapter;
 import com.webtutsplus.ecommerceapp.Adapter.HomeProductAdapter;
@@ -31,9 +32,9 @@ import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity implements OnItemClickListener {
 
-    Button startShoppingButton;
     TextView adminOptionsButton;
-
+    Button categoriesExploreAll;
+    Button productExploreAll;
     private RecyclerView revCategories;
     private RecyclerView revProducts;
 
@@ -42,17 +43,26 @@ public class HomeActivity extends AppCompatActivity implements OnItemClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        startShoppingButton = findViewById(R.id.start_shopping_btn);
         revCategories = findViewById(R.id.revCategories);
         revProducts = findViewById(R.id.revProducts);
         adminOptionsButton = findViewById(R.id.btn_admin_options);
+        categoriesExploreAll = findViewById(R.id.btn_category_explore_all);
+        productExploreAll = findViewById(R.id.btn_product_explore_all);
 
-        startShoppingButton.setOnClickListener(new View.OnClickListener() {
+        categoriesExploreAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ListCategoriesActivity.class));
+                Intent intent = new Intent(HomeActivity.this,ListCategoriesActivity.class);
+                startActivity(intent);
             }
         });
+        productExploreAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ListProductsActivity.class));
+            }
+        });
+
         adminOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
