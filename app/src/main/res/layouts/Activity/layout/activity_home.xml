@@ -1,16 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_black1"
     android:layout_height="match_parent"
     tools:context=".Activity.Home.HomeActivity">
 
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:id="@+id/toolbar"
+        android:elevation="8dp"
+        android:background="@color/bg_black1"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:text="Webtutplus"
+                android:textColor="#fff">
+
+
+            </TextView>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/ButtonStyle"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:text="Admin Options"
+                android:layout_marginRight="10dp"
+                android:id="@+id/btn_admin_options">
+
+
+            </com.google.android.material.button.MaterialButton>
+
+
+        </RelativeLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <ScrollView
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:orientation="vertical"
+             android:layout_height="wrap_content">
+
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,47 +76,13 @@
                 android:layout_width="match_parent"
                 android:id="@+id/image_view"
                 android:scaleType="fitXY"
-                android:src="@drawable/bg_new"
+                android:src="@drawable/ecommerce"
                 android:layout_height="match_parent">
 
 
 
 
             </ImageView>
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="ADMIN OPTIONS"
-                android:textSize="10sp"
-                android:backgroundTint="#1A52DF"
-                android:textColor="#fff"
-                android:fontFamily="@font/roboto"
-                android:layout_marginTop="10sp"
-                android:id="@+id/btn_admin_options"
-                android:layout_marginRight="10sp"
-                android:layout_height="40dp">
-
-
-            </com.google.android.material.button.MaterialButton>
-
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_below="@id/btn_admin_options"
-                android:layout_marginTop="20dp"
-                android:foregroundGravity="center"
-                android:layout_centerInParent="true"
-                app:cardBackgroundColor="@android:color/transparent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
-
-
 
 
                 <TextView
@@ -72,6 +91,8 @@
                     android:text="WebtutPlus Market"
                     android:gravity="center"
                     android:textColor="#fff"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
                     android:textSize="24sp"
                     android:fontFamily="@font/roboto"
                     android:textStyle="bold"
@@ -80,103 +101,77 @@
 
                 </TextView>
 
-
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:text="Shop from a wide range of categories"
-                        android:gravity="center"
-                        android:textColor="#fff"
-                        android:fontFamily="@font/roboto"
-                        android:textSize="12sp"
-                        android:layout_height="wrap_content">
-
-
-                    </TextView>
-
-
-
-        <com.google.android.material.button.MaterialButton
-                        android:id="@+id/start_shopping_btn"
-                        android:layout_width="150dp"
-                        android:layout_gravity="center"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#1A52DF"
-                        android:text="Start Shopping"
-                        android:textColor="#fff"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/roboto"
-                        android:layout_marginTop="30dp"
-                        app:rippleColor="#FF3700B3"
-                        android:textAllCaps="false"
-                        style="?attr/materialButtonOutlinedStyle" />
-
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Popular categories"
-            android:textColor="#000">
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:orientation="vertical"
+                 android:background="@color/bg_black1"
+                 android:layout_height="wrap_content">
+
+                 <TextView
+                     style="@style/textViewStyle"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginTop="10dp"
+                     android:text="Popular categories">
+
+                 </TextView>
+
+                 <androidx.recyclerview.widget.RecyclerView
+                     android:layout_marginTop="10dp"
+                     android:id="@+id/revCategories"
+                     android:orientation="horizontal"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:background="@color/bg_black1"
+                     tools:listitem="@layout/listitem_home_category_item" />
 
 
-        </TextView>
+                 <com.google.android.material.button.MaterialButton
+                     style="@style/ButtonStyle"
+                     android:layout_alignParentRight="true"
+                     android:text="Explore All"
+                     android:textSize="14sp"
+                     android:layout_marginTop="10sp"
+                     android:id="@+id/btn_category_explore_all"
+                     android:layout_marginLeft="10sp">
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="10dp"
-                android:id="@+id/revCategories"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#fff"
-                tools:listitem="@layout/listitem_home_category_item" />
+                 </com.google.android.material.button.MaterialButton>
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:fontFamily="@font/roboto"
+                     android:textSize="24sp"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginTop="10dp"
+                     android:text="Best products"
+                     android:textColor="#fff">
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="@android:color/darker_gray"/>
+                 </TextView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Best products"
-            android:textColor="#000">
+                 <androidx.recyclerview.widget.RecyclerView
+                     android:id="@+id/revProducts"
+                     android:layout_marginTop="10dp"
+                     android:orientation="horizontal"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:background="@color/bg_black1"
+                     tools:listitem="@layout/listitem_home_category_item" />
 
+                 <com.google.android.material.button.MaterialButton
+                     android:text="Explore All"
+                     style="@style/ButtonStyle"
+                     android:textSize="14sp"
+                     android:layout_marginTop="10sp"
+                     android:id="@+id/btn_product_explore_all"
+                     android:layout_marginLeft="10sp" />
 
-        </TextView>
+             </LinearLayout>
 
+         </LinearLayout>
+    </ScrollView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/revProducts"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            tools:listitem="@layout/listitem_home_category_item" />
-
-
-    </LinearLayout>
-
-
-</ScrollView>
+</LinearLayout>
